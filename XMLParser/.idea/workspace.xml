@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="444ee9ce-e753-486b-9956-5f4f4d53370b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/credit_cards.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SAXParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreditCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DOMParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DOMParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SAXParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SAXParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,8 @@
       <workItem from="1693818154119" duration="54000" />
       <workItem from="1693818212873" duration="3589000" />
       <workItem from="1693822613015" duration="448000" />
-      <workItem from="1693823068310" duration="730000" />
+      <workItem from="1693823068310" duration="1970000" />
+      <workItem from="1693833961167" duration="301000" />
     </task>
     <servers />
   </component>

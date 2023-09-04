@@ -1,17 +1,20 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.xml.parsers.SAXParserFactory;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.SAXParserFactory;
-import java.util.ArrayList;
-import java.util.List;
-
 public class SAXParser {
     public static void main(String[] args) {
+        List<CreditCard> cards = new ArrayList<>();
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             javax.xml.parsers.SAXParser saxParser = factory.newSAXParser();
-
-            List<CreditCard> cards = new ArrayList<>();
 
             DefaultHandler handler = new DefaultHandler() {
                 CreditCard card;
@@ -27,6 +30,12 @@ public class SAXParser {
                 public void endElement(String uri, String localName, String qName) {
                     if ("credit_card".equals(qName)) {
                         cards.add(card);
+                        try {
+                            card.isValid();
+                            System.out.println("Valid card: " + card);
+                        } catch (Exception e) {
+                            System.out.println("Invalid card detected: " + card + " Reason: " + e.getMessage());
+                        }
                     }
                     currentElement = "";
                 }
@@ -49,11 +58,14 @@ public class SAXParser {
 
             saxParser.parse("credit_cards.xml", handler);
 
-            for (CreditCard card : cards) {
-                System.out.println(card);
-            }
-
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            List<String> outputLines = cards.stream().map(CreditCard::toString).collect(Collectors.toList());
+            Files.write(Paths.get("output.txt"), outputLines);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
