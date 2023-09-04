@@ -1,34 +1,30 @@
 import java.util.regex.Pattern;
 
 class CreditCard {
+    private static final String CARD_NUMBER_PATTERN = "\\d{4}-\\d{4}-\\d{4}-\\d{4}";
+    private static final String CARD_HOLDER_PATTERN = "[A-Za-z\\s]+";
+    private static final String EXPIRATION_DATE_PATTERN = "\\d{4}-\\d{2}";
+    private static final String CVC_PATTERN = "\\d{3}";
+
     private String cardNumber;
     private String cardHolder;
     private String expirationDate;
     private String cvc;
 
-    public void isValid() throws Exception {
-        boolean isValidCardNumber = Pattern.matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}", this.cardNumber);
-        boolean isValidCardHolder = Pattern.matches("[A-Za-z\\s]+", this.cardHolder);
-        boolean isValidExpirationDate = Pattern.matches("\\d{4}-\\d{2}", this.expirationDate);
-        boolean isValidCvc = Pattern.matches("\\d{3}", this.cvc);
-
-        if (!isValidCardNumber) {
-            throw new Exception("Invalid CardNumber");
+    public void validate() throws InvalidCardException {
+        if (!Pattern.matches(CARD_NUMBER_PATTERN, cardNumber)) {
+            throw new InvalidCardException("Invalid CardNumber");
         }
-
-        if (!isValidCardHolder) {
-            throw new Exception("Invalid CardHolder");
+        if (!Pattern.matches(CARD_HOLDER_PATTERN, cardHolder)) {
+            throw new InvalidCardException("Invalid CardHolder");
         }
-
-        if (!isValidExpirationDate) {
-            throw new Exception("Invalid ExpirationDate");
+        if (!Pattern.matches(EXPIRATION_DATE_PATTERN, expirationDate)) {
+            throw new InvalidCardException("Invalid ExpirationDate");
         }
-
-        if (!isValidCvc) {
-            throw new Exception("Invalid Cvc");
+        if (!Pattern.matches(CVC_PATTERN, cvc)) {
+            throw new InvalidCardException("Invalid CVC");
         }
     }
-
 
     public String getCardNumber() {
         return cardNumber;
