@@ -6,12 +6,12 @@
             <xsd:sequence>
                 <xsd:element name="credit_card" maxOccurs="unbounded">
                     <xsd:complexType>
-                        <xsd:ёsequence>
+                        <xsd:sequence>
                             <xsd:element name="card_number" type="xsd:string"/>
                             <xsd:element name="card_holder" type="xsd:string"/>
                             <xsd:element name="expiration_date" type="xsd:string"/>
                             <xsd:element name="cvc" type="xsd:string"/>
-                        </xsd:ёsequence>
+                        </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
             </xsd:sequence>
