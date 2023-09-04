@@ -6,9 +6,29 @@ class CreditCard {
     private String expirationDate;
     private String cvc;
 
-    public boolean isValid() {
-        return Pattern.matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}", this.cardNumber);
+    public void isValid() throws Exception {
+        boolean isValidCardNumber = Pattern.matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}", this.cardNumber);
+        boolean isValidCardHolder = Pattern.matches("[A-Za-z\\s]+", this.cardHolder);
+        boolean isValidExpirationDate = Pattern.matches("\\d{4}-\\d{2}", this.expirationDate);
+        boolean isValidCvc = Pattern.matches("\\d{3}", this.cvc);
+
+        if (!isValidCardNumber) {
+            throw new Exception("Invalid CardNumber");
+        }
+
+        if (!isValidCardHolder) {
+            throw new Exception("Invalid CardHolder");
+        }
+
+        if (!isValidExpirationDate) {
+            throw new Exception("Invalid ExpirationDate");
+        }
+
+        if (!isValidCvc) {
+            throw new Exception("Invalid Cvc");
+        }
     }
+
 
     public String getCardNumber() {
         return cardNumber;

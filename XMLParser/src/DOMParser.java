@@ -5,18 +5,23 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DOMParser {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        List<CreditCard> cards = null;
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse("credit_cards.xml");
 
             NodeList nList = doc.getElementsByTagName("credit_card");
-            List<CreditCard> cards = new ArrayList<>();
+            cards = new ArrayList<>();
 
             for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
@@ -35,15 +40,21 @@ public class DOMParser {
             }
 
             for (CreditCard card : cards) {
-                if (!card.isValid()) {
-                    System.out.println("Invalid card detected: " + card);
-                } else {
+                try {
+                    card.isValid();
                     System.out.println("Valid card: " + card);
+                } catch (Exception e) {
+                    System.out.println("Invalid card detected: " + card + " Reason: " + e.getMessage());
                 }
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        assert cards != null;
+        List<String> outputLines = cards.stream().map(CreditCard::toString).collect(Collectors.toList());
+        Files.write(Paths.get("output.txt"), outputLines);
+
     }
 }
