@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Credit Card</title>
+</head>
+<body>
+<h1>Update Credit Card</h1>
+<form action="/updateCard" method="post">
+    <input type="hidden" name="id" th:value="${card.id}"/>
+    <label>
+        <input type="text" name="cardNumber" th:value="${card.cardNumber}" placeholder="Card Number">
+    </label>
+    <label>
+        <input type="text" name="cardHolder" th:value="${card.cardHolder}" placeholder="Card Holder">
+    </label>
+    <label>
+        <input type="text" name="expirationDate" th:value="${card.expirationDate}" placeholder="Expiration Date">
+    </label>
+    <label>
+        <input type="text" name="cvc" th:value="${card.cvc}" placeholder="CVC">
+    </label>
+    <button type="submit">Update Card</button>
+</form>
+</body>
+</html>

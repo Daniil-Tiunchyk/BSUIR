@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Credit Cards</title>
+</head>
+<body>
+<h1>All Credit Cards</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Card Number</th>
+        <th>Card Holder</th>
+        <th>Expiration Date</th>
+        <th>CVC</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="card : ${cards}">
+        <td th:text="${card.cardNumber}"></td>
+        <td th:text="${card.cardHolder}"></td>
+        <td th:text="${card.expirationDate}"></td>
+        <td th:text="${card.cvc}"></td>
+        <td>
+            <a th:href="@{/deleteCard/{id}(id=${card.id})}">Delete</a> |
+            <a th:href="@{/updateCard/{id}(id=${card.id})}">Update</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Add a new card</h2>
+<form action="/addCard" method="post">
+    <label>
+        <input type="text" name="cardNumber" placeholder="Card Number">
+    </label>
+    <label>
+        <input type="text" name="cardHolder" placeholder="Card Holder">
+    </label>
+    <label>
+        <input type="text" name="expirationDate" placeholder="Expiration Date">
+    </label>
+    <label>
+        <input type="text" name="cvc" placeholder="CVC">
+    </label>
+    <button type="submit">Add Card</button>
+</form>
+</body>
+</html>
