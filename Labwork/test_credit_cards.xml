@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<credit_cards>
+    <credit_card>
+        <card_number>1234-5678-9101-1121</card_number>
+        <card_holder>John Doe</card_holder>
+        <expiration_date>2024-09</expiration_date>
+        <cvc>123</cvc>
+    </credit_card>
+</credit_cards>
