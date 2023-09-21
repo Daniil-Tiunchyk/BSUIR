@@ -1,9 +1,12 @@
 package Labwork_2;
 
+import lombok.Getter;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Getter
 class Ship implements Runnable {
     private final AtomicInteger totalContainers;
     private final int capacity;
@@ -36,12 +39,11 @@ class Ship implements Runnable {
                 }
                 containersToLoad = Math.min(capacity, totalContainers.get());
                 totalContainers.addAndGet(-containersToLoad);
-                printAndWrite("Осталось " + totalContainers.get() + " контейнеров.");
+                printAndWrite("В порту осталось " + totalContainers.get() + " контейнеров.");
             }
             try {
                 Thread.sleep((long) loadingTime * containersToLoad);
                 Thread.sleep(deliveryTime);
-
                 trips++;
                 printAndWrite("Корабль с вместимостью " + capacity + " завершил рейс номер " + trips);
             } catch (InterruptedException e) {
@@ -57,13 +59,5 @@ class Ship implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public int getTrips() {
-        return trips;
-    }
-
-    public int getCapacity() {
-        return capacity;
     }
 }
