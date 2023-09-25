@@ -6,14 +6,15 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Getter
 class Ship implements Runnable {
     private final AtomicInteger totalContainers;
+    @Getter
     private final int capacity;
     private final BufferedWriter writer;
     private final Object lock;
     private final int loadingTime;
     private final int deliveryTime;
+    @Getter
     private int trips;
 
     public Ship(AtomicInteger totalContainers, int capacity, BufferedWriter writer, Object lock, int loadingTime, int deliveryTime) {

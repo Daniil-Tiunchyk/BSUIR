@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Labwork-1-Java-Console-Book-Manager.iml" filepath="$PROJECT_DIR$/Labwork-1-Java-Console-Book-Manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Labworks.iml" filepath="$PROJECT_DIR$/Labworks.iml" />
     </modules>
   </component>
 </project>

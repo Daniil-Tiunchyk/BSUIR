@@ -19,8 +19,8 @@ public class Main {
             capacities[i] = scanner.nextInt();
         }
 
-        int loadingTime = 200;
-        int deliveryTime = 4000;
+        int loadingTime = 20;
+        int deliveryTime = 400;
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
