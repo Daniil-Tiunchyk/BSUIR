@@ -12,7 +12,7 @@
 
 1. Склонируйте репозиторий на ваш локальный компьютер.
     ```bash
-    git clone https://github.com/Neural-Enigma/BSUIR-Network-Applications-Java-Labs.git
+    git clone https://github.com/Daniil-Tsiunchyk/BSUIR-Network-Applications-Java-Labs.git
     ```
 2. Откройте проект в вашей предпочитаемой IDE (например, IntelliJ IDEA, Eclipse).
 3. Запустите код для соответствующей лабораторной работы.
