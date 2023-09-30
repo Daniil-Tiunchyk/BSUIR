@@ -57,11 +57,6 @@ class ClientHandler extends Thread {
                     out.println("Ошибка: Введите два целых числа через пробел.");
                 }
             }
-
-            fileWriter.close();
-            in.close();
-            out.close();
-            clientSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

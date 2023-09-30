@@ -11,7 +11,6 @@ public class Client {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             Scanner scanner = new Scanner(System.in);
-
             while (true) {
                 System.out.println("Введите два числа через пробел (или 'exit' для выхода): ");
                 String input = scanner.nextLine();
@@ -24,11 +23,6 @@ public class Client {
                 String response = in.readLine();
                 System.out.println("Ответ от сервера: " + response);
             }
-
-            socket.close();
-            scanner.close();
-            in.close();
-            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
