@@ -1,16 +1,13 @@
 package bsuir.labwork.Labwork.models;
 
 import bsuir.labwork.Labwork.exceptions.InvalidCardException;
+import bsuir.labwork.Labwork.interfaces.Visitor;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.util.regex.Pattern;
 
-@Getter
-@Setter
-@ToString
+@Data
 @Entity
 @Table(name = "credit_cards")
 public class CreditCard {
@@ -41,5 +38,9 @@ public class CreditCard {
         if (!Pattern.matches(CVC_PATTERN, cvc)) {
             throw new InvalidCardException("Invalid CVC");
         }
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

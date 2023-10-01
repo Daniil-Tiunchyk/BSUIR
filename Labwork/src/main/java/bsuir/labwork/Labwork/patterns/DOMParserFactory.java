@@ -1,4 +1,4 @@
-package bsuir.labwork.Labwork.factories;
+package bsuir.labwork.Labwork.patterns;
 
 import bsuir.labwork.Labwork.interfaces.Parser;
 import bsuir.labwork.Labwork.interfaces.ParserFactory;

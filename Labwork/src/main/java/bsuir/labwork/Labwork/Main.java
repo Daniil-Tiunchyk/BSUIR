@@ -1,11 +1,12 @@
 package bsuir.labwork.Labwork;
 
 import bsuir.labwork.Labwork.configs.ParserConfig;
+import bsuir.labwork.Labwork.patterns.CardValidationVisitor;
 import bsuir.labwork.Labwork.models.CreditCard;
-import bsuir.labwork.Labwork.factories.DOMParserFactory;
+import bsuir.labwork.Labwork.patterns.DOMParserFactory;
 import bsuir.labwork.Labwork.interfaces.Parser;
 import bsuir.labwork.Labwork.interfaces.ParserFactory;
-import bsuir.labwork.Labwork.factories.SAXParserFactory;
+import bsuir.labwork.Labwork.patterns.SAXParserFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,15 +37,13 @@ public class Main {
     }
 
     private static void validateAndPrintCards(List<CreditCard> cards) {
+        CardValidationVisitor visitor = new CardValidationVisitor();
+
         for (CreditCard card : cards) {
-            try {
-                card.validate();
-                System.out.println("Valid card: " + card);
-            } catch (Exception e) {
-                System.out.println("Invalid card detected: " + card + " Reason: " + e.getMessage());
-            }
+            card.accept(visitor);
         }
     }
+
 
     private static void writeCardsToFile(List<CreditCard> cards) throws IOException {
         List<String> outputLines = cards.stream().map(CreditCard::toString).collect(Collectors.toList());
