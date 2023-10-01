@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <credit_cards>
     <credit_card>
-        <card_number>1234-5678-9101-1121</card_number>
+        <card_number>378282246310005</card_number> // Допустимый номер карты American Express
         <card_holder>John Doe</card_holder>
         <expiration_date>2022-09</expiration_date>
         <cvc>123</cvc>
     </credit_card>
     <credit_card>
-        <card_number>4321-8765-1098-7654</card_number>
+        <card_number>4111111111111111</card_number> // Допустимый номер карты Visa
         <card_holder>Jane Doe</card_holder>
         <expiration_date>2023-12</expiration_date>
         <cvc>456</cvc>
     </credit_card>
     <credit_card>
-        <card_number>5555-4444-3333-2222</card_number>
+        <card_number>5555555555554444</card_number> // Допустимый номер карты Mastercard
         <card_holder>Emily Smith</card_holder>
         <expiration_date>2022-07</expiration_date>
         <cvc>789</cvc>
     </credit_card>
     <credit_card>
-        <card_number>9999-8888-7777-6666</card_number>
+        <card_number>6011111111111117</card_number> // Допустимый номер карты Discover
         <card_holder>Michael Johnson</card_holder>
         <expiration_date>2024-01</expiration_date>
         <cvc>321</cvc>
