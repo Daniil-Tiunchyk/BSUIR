@@ -5,10 +5,7 @@ import java.net.*;
 
 public class Client {
     public static void main(String[] args) {
-        DatagramSocket socket = null;
-
-        try {
-            socket = new DatagramSocket();
+        try (DatagramSocket socket = new DatagramSocket()) {
             InetAddress serverAddress = InetAddress.getByName("localhost");
             int serverPort = 5040;
 
@@ -30,6 +27,7 @@ public class Client {
 
                     String sendData = num1 + " " + num2;
                     byte[] sendDataBytes = sendData.getBytes();
+
                     DatagramPacket sendPacket = new DatagramPacket(sendDataBytes, sendDataBytes.length, serverAddress, serverPort);
                     socket.send(sendPacket);
 
@@ -45,10 +43,6 @@ public class Client {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (socket != null && !socket.isClosed()) {
-                socket.close();
-            }
         }
     }
 }
