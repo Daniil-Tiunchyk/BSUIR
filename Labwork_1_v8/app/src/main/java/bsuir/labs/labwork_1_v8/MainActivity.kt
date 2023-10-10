@@ -3,7 +3,10 @@ package bsuir.labs.labwork_1_v8
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,8 +15,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editTextAmount: EditText
     private lateinit var buttonConvert: Button
     private lateinit var textViewResult: TextView
+    private lateinit var viewModel: CurrencyConverterViewModel
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,9 +27,7 @@ class MainActivity : AppCompatActivity() {
         buttonConvert = findViewById(R.id.buttonConvert)
         textViewResult = findViewById(R.id.textViewResult)
 
-        val currencies = listOf(
-            "USD", "RUB", "BYN"
-        )
+        val currencies = listOf("USD", "RUB", "BYN")
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, currencies)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -34,12 +35,50 @@ class MainActivity : AppCompatActivity() {
         spinnerFromCurrency.adapter = adapter
         spinnerToCurrency.adapter = adapter
 
+        viewModel = ViewModelProvider(this)[CurrencyConverterViewModel::class.java]
+
+        spinnerFromCurrency.setSelection(currencies.indexOf("USD"))
+        spinnerToCurrency.setSelection(currencies.indexOf("BYN"))
+
+        spinnerFromCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedFromCurrency = currencies[position]
+                val selectedToCurrency = spinnerToCurrency.selectedItem.toString()
+                if (selectedFromCurrency == selectedToCurrency) {
+                    spinnerToCurrency.setSelection(currencies.indexOf(selectedFromCurrency))
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        spinnerToCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedToCurrency = currencies[position]
+                val selectedFromCurrency = spinnerFromCurrency.selectedItem.toString()
+                if (selectedToCurrency == selectedFromCurrency) {
+                    spinnerFromCurrency.setSelection(currencies.indexOf(selectedFromCurrency))
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
         buttonConvert.setOnClickListener {
             convertCurrency()
         }
-        //сохранять результат при перевороте окна
-        //Менять местами при выборе валюты
-        //Вывод курса
+
+        textViewResult.text = viewModel.result
     }
 
     @SuppressLint("SetTextI18n")
@@ -69,13 +108,19 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val exchangeRate = exchangeRates[fromCurrency]?.get(toCurrency) ?: 1.0
                 val convertedAmount = amount * exchangeRate
-                textViewResult.text =
-                    "Результат: $amount $fromCurrency = $convertedAmount $toCurrency"
+                viewModel.result = "Результат: $amount $fromCurrency = $convertedAmount $toCurrency"
+                textViewResult.text = viewModel.result
             } else {
-                textViewResult.text = "Не удалось выполнить конвертацию"
+                viewModel.result = "Не удалось выполнить конвертацию"
+                textViewResult.text = viewModel.result
             }
         } else {
-            textViewResult.text = "Введите корректную сумму"
+            viewModel.result = "Введите корректную сумму"
+            textViewResult.text = viewModel.result
         }
     }
+}
+
+class CurrencyConverterViewModel : ViewModel() {
+    var result: String = ""
 }
