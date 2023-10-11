@@ -41,16 +41,12 @@ class MainActivity : AppCompatActivity() {
         spinnerToCurrency.setSelection(currencies.indexOf("BYN"))
 
         spinnerFromCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedFromCurrency = currencies[position]
                 val selectedToCurrency = spinnerToCurrency.selectedItem.toString()
                 if (selectedFromCurrency == selectedToCurrency) {
-                    spinnerToCurrency.setSelection(currencies.indexOf(selectedFromCurrency))
+                    val toCurrencyPosition = (position + 1) % currencies.size
+                    spinnerToCurrency.setSelection(toCurrencyPosition)
                 }
             }
 
@@ -58,21 +54,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         spinnerToCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedToCurrency = currencies[position]
                 val selectedFromCurrency = spinnerFromCurrency.selectedItem.toString()
                 if (selectedToCurrency == selectedFromCurrency) {
-                    spinnerFromCurrency.setSelection(currencies.indexOf(selectedFromCurrency))
+                    val fromCurrencyPosition = (position + 1) % currencies.size
+                    spinnerFromCurrency.setSelection(fromCurrencyPosition)
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+
 
         buttonConvert.setOnClickListener {
             convertCurrency()
