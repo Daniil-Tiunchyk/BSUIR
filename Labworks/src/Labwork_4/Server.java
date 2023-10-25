@@ -24,7 +24,6 @@ public class Server {
                     System.out.println("Получен неверный запрос от " + receivePacket.getAddress() + ":" + receivePacket.getPort());
                     continue;
                 }
-
                 int num1 = Integer.parseInt(numbers[0]);
                 int num2 = Integer.parseInt(numbers[1]);
                 int gcd = calculateGCD(num1, num2);
@@ -51,3 +50,11 @@ public class Server {
         return (a * b) / calculateGCD(a, b);
     }
 }
+
+// RFC 768 (User Datagram Protocol)
+//Source Port + Destination Port + Length + Checksum + данные
+//расчёт контрольной суммы с использованием обратного кода(one's complement checksum).
+//Может вычисляться сетевым адаптером(?)
+//Protocol Data Unit (header + payload). Инкапсуляция?
+//IP/ICMP. TCP/UDP. DNS/DHCP
+//виртуальное полнодуплексное(?) соеденение медлу процессами

@@ -1,4 +1,4 @@
-package Nastya_Labworks.Labwork_1;
+package Nasya_Labworks.Labwork_1;
 
 import java.util.Scanner;
 
@@ -16,9 +16,9 @@ public class Main {
             }
 
             if (isValidJavaIdentifier(identifier)) {
-                System.out.println("Идентификатор '" + identifier + "' допустим на языке Java.\n");
+                System.out.println("Идентификатор '" + identifier + "' допустим в языке Java.\n");
             } else {
-                System.out.println("Идентификатор '" + identifier + "' не является допустимым на языке Java.\n");
+                System.out.println("Идентификатор '" + identifier + "' не является допустимым в языке Java.\n");
             }
         }
     }
