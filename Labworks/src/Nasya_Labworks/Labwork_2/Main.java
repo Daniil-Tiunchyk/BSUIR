@@ -25,9 +25,11 @@ public class Main {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
             for (int i = 0; i < 4; i++) {
+                System.out.println("Колонка №" + (i + 1) + " обслужила " + ExecutionTracker.columnCarsServised[i] + " автомобилей");
                 writer.write("Колонка №" + (i + 1) + " обслужила " + ExecutionTracker.columnCarsServised[i] + " автомобилей");
                 writer.newLine();
             }
+            System.out.println("Общее количество обслуженных автомобилей: " + ExecutionTracker.carsServiced);
             writer.write("Общее количество обслуженных автомобилей: " + ExecutionTracker.carsServiced);
         } catch (IOException e) {
             System.err.println("Ошибка при записи в файл: " + e.getMessage());
