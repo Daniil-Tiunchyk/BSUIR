@@ -1,4 +1,4 @@
-package Nasya_Labworks.Labwork_1;
+package Labwork_1_v7;
 
 import java.util.Scanner;
 

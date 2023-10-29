@@ -1,4 +1,4 @@
-package Nasya_Labworks.Labwork_2;
+package Labwork_2_v7;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

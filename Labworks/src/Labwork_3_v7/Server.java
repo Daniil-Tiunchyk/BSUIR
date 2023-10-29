@@ -1,4 +1,4 @@
-package Nasya_Labworks.Labwork_3;
+package Labwork_3_v7;
 
 import java.io.*;
 import java.net.*;

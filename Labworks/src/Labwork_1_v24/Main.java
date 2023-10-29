@@ -1,4 +1,5 @@
-package Labwork_1;
+package Labwork_1_v24;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -54,16 +55,5 @@ public class Main {
         for (int i = 0; i < numberOfBooks; i++) {
             System.out.println(books[i]);
         }
-    }
-}
-
-record Book(String title, int year) {
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", year=" + year +
-                '}';
     }
 }

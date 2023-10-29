@@ -1,4 +1,4 @@
-package Labwork_2;
+package Labwork_2_v13;
 
 import lombok.Getter;
 

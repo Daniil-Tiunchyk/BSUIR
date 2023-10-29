@@ -1,6 +1,6 @@
-package Nasya_Labworks.Labwork_2;
+package Labwork_2_v7;
 
-import static Nasya_Labworks.Labwork_2.ExecutionTracker.*;
+import static Labwork_2_v7.ExecutionTracker.*;
 
 public class Column implements Runnable {
     public Column(int id) {
