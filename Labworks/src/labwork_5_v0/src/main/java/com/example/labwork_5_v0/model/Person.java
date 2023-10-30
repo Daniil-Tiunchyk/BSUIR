@@ -1,13 +1,8 @@
 package com.example.labwork_5_v0.model;
 
 import java.time.LocalDate;
-//Пример №11. Поэтапное создание приложения с использованием библиотеки JavaFX
-//Person.java
 import javafx.beans.property.*;
 
-/**
- * Класс-модель для адресата (Person)
- */
 public class Person {
 
   private final StringProperty firstName;
@@ -17,9 +12,6 @@ public class Person {
   private final IntegerProperty postalCode;
   private final ObjectProperty<LocalDate> birthday;
 
-  /**
-   * Конструктор по умолчанию
-   */
   public Person() {
     this(null, null);
   }
@@ -52,20 +44,8 @@ public class Person {
     return city.get();
   }
 
-  public StringProperty cityProperty() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city.set(city);
-  }
-
   public String getStreet() {
     return street.get();
-  }
-
-  public StringProperty streetProperty() {
-    return street;
   }
 
   public void setStreet(String street) {
@@ -76,10 +56,6 @@ public class Person {
     return postalCode.get();
   }
 
-  public IntegerProperty postalCodeProperty() {
-    return postalCode;
-  }
-
   public void setPostalCode(int postalCode) {
     this.postalCode.set(postalCode);
   }
@@ -88,27 +64,16 @@ public class Person {
     return birthday.get();
   }
 
-  public ObjectProperty<LocalDate> birthdayProperty() {
-    return birthday;
-  }
-
   public void setBirthday(LocalDate birthday) {
     this.birthday.set(birthday);
   }
 
-  /**
-   * Конструктор с некоторыми начальными данными.
-   *
-   * @param firstName
-   * @param lastName
-   */
   public Person(String firstName, String lastName) {
     this.firstName = new SimpleStringProperty(firstName);
     this.lastName = new SimpleStringProperty(lastName);
     this.city = new SimpleStringProperty("г. Минск");
     this.street = new SimpleStringProperty("пр. Независимости");
     this.postalCode = new SimpleIntegerProperty(1234);
-    this.birthday =
-      new SimpleObjectProperty<LocalDate>(LocalDate.of(2000, 01, 01));
+    this.birthday = new SimpleObjectProperty<>(LocalDate.of(2000, 1, 1));
   }
 }

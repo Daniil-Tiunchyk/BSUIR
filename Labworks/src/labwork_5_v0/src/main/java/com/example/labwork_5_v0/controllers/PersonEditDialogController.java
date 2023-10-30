@@ -1,8 +1,5 @@
 package com.example.labwork_5_v0.controllers;
 
-//Пример №11. Поэтапное создание приложения с использованием библиотеки JavaFX
-//PersonEditDialogController.java
-
 import com.example.labwork_5_v0.model.Person;
 import com.example.labwork_5_v0.util.DateUtil;
 import javafx.fxml.FXML;
@@ -10,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/*Окно для изменения информации об адресате*/
 public class PersonEditDialogController {
 
   @FXML
@@ -35,28 +31,13 @@ public class PersonEditDialogController {
   private Person person;
   private boolean okClicked = false;
 
-  /**
-   * Инициализирует класс-контроллер. Этот метод вызывается
-   * автоматически после того, как fxml-файл будет загружен.
-   */
   @FXML
   private void initialize() {}
 
-  /**
-   * Устанавливает сцену для этого окна.
-   *
-   * @param dialogStage
-   */
   public void setDialogStage(Stage dialogStage) {
     this.dialogStage = dialogStage;
   }
 
-  /**
-   * Задаёт данные об адресате, информацию о котором будем
-   * менять.
-   *
-   * @param person
-   */
   public void setPerson(Person person) {
     this.person = person;
     firstNameField.setText(person.getFirstName());
@@ -70,19 +51,10 @@ public class PersonEditDialogController {
     birthdayField.setPromptText("dd.mm.yyyy");
   }
 
-  /**
-   * Returns true, если пользователь кликнул OK, в другом случае
-   * false.
-   *
-   * @return
-   */
   public boolean isOkClicked() {
     return okClicked;
   }
 
-  /**
-   * Вызывается, когда пользователь кликнул по кнопке OK.
-   */
   @FXML
   private void handleOk() {
     if (isInputValid()) {
@@ -98,54 +70,40 @@ public class PersonEditDialogController {
     }
   }
 
-  /**
-   * Вызывается, когда пользователь кликнул по кнопке Cancel.
-   */
   @FXML
   private void handleCancel() {
     dialogStage.close();
   }
 
-  /**
-   * Метод проверяет пользовательский ввод в текстовых полях.
-   *
-   * @return true, если пользовательский ввод корректен
-   */
   private boolean isInputValid() {
     String errorMessage = "";
-    if (
-      firstNameField.getText() == null || firstNameField.getText().length() == 0
-    ) {
+
+    if (isFieldEmpty(firstNameField)) {
       errorMessage += "Некорректно введено имя!\n";
     }
-    if (
-      lastNameField.getText() == null || lastNameField.getText().length() == 0
-    ) {
+
+    if (isFieldEmpty(lastNameField)) {
       errorMessage += "Некорректно введена фамилия!\n";
     }
-    if (streetField.getText() == null || streetField.getText().length() == 0) {
+
+    if (isFieldEmpty(streetField)) {
       errorMessage += "Некорректно введена улица!\n";
     }
-    if (
-      postalCodeField.getText() == null ||
-      postalCodeField.getText().length() == 0
-    ) {
+
+    if (isFieldEmpty(postalCodeField)) {
       errorMessage += "Некорректно введен почтовый код!\n";
     } else {
-      // try to parse the postal code into an int.
-      try {
-        Integer.parseInt(postalCodeField.getText());
-      } catch (NumberFormatException e) {
+      if (!isInteger(postalCodeField.getText())) {
         errorMessage +=
-          "Некорректно введен почтовый код(должен быть целочисленным)!\n";
+          "Некорректно введен почтовый код (должен быть целочисленным)!\n";
       }
     }
-    if (cityField.getText() == null || cityField.getText().length() == 0) {
+
+    if (isFieldEmpty(cityField)) {
       errorMessage += "Некорректно введен город!\n";
     }
-    if (
-      birthdayField.getText() == null || birthdayField.getText().length() == 0
-    ) {
+
+    if (isFieldEmpty(birthdayField)) {
       errorMessage += "Некорректно введен день рождения!\n";
     } else {
       if (!DateUtil.validDate(birthdayField.getText())) {
@@ -153,17 +111,44 @@ public class PersonEditDialogController {
           "Неверный формат даты. Используйте формат дд.мм.гггг!\n";
       }
     }
-    if (errorMessage.length() == 0) {
+
+    if (errorMessage.isEmpty()) {
       return true;
     } else {
-      // Show the error message.
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.initOwner(dialogStage);
-      alert.setTitle("Неверно заполнены поля");
-      alert.setHeaderText("Введите корректные значения полей");
-      alert.setContentText(errorMessage);
-      alert.showAndWait();
+      showAlert(
+        "Неверно заполнены поля",
+        "Введите корректные значения полей",
+        errorMessage,
+        Alert.AlertType.WARNING
+      );
       return false;
     }
+  }
+
+  private boolean isFieldEmpty(TextField field) {
+    return field.getText() == null || field.getText().isEmpty();
+  }
+
+  private boolean isInteger(String s) {
+    try {
+      Integer.parseInt(s);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
+  private void showAlert(
+    String title,
+    String header,
+    String content,
+    Alert.AlertType alertType
+  ) {
+    Alert alert = new Alert(alertType);
+    alert.initOwner(dialogStage);
+    alert.setTitle(title);
+    alert.setHeaderText(header);
+    alert.setContentText(content);
+    alert.showAndWait();
   }
 }
