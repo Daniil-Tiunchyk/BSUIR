@@ -1,10 +1,9 @@
 package computer.games;
 
-import java.io.IOException;
-
 import computer.games.controllers.PersonEditDialogController;
 import computer.games.controllers.PersonOverviewController;
 import computer.games.model.Person;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
