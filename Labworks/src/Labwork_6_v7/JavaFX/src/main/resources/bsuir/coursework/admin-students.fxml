@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="1300.0" stylesheets="@styles/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bsuir.coursework.controllers.AdminStudentsController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="Меню">
+                    <items>
+                        <MenuItem onAction="#logout" text="Выход" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+      <VBox spacing="5.0">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Label text="Управление медицинскими работниками" />
+               <TableView fx:id="tableStudents" prefHeight="638.0" prefWidth="688.0">
+                   <columns>
+                       <TableColumn fx:id="columnStudentID" prefWidth="48.66665875911713" text="ID" />
+                       <TableColumn fx:id="columnFirstName" prefWidth="88.66665267944336" text="Имя" />
+                       <TableColumn fx:id="columnLastName" prefWidth="134.6667022705078" text="Фамилия" />
+                       <TableColumn fx:id="columnEmail" prefWidth="144.0" text="Эл. почта" />
+                       <TableColumn fx:id="columnPhoneNumber" prefWidth="128.66665649414062" text="Телефон" />
+                   </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               </TableView>
+         </children>
+      </VBox>
+    </center>
+   <right>
+      <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="249.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Выбранный работник" />
+            <TextField fx:id="nameField" promptText="Имя" />
+            <TextField fx:id="emailField" promptText="Эл. Почта" />
+            <PasswordField fx:id="passwordField" promptText="Пароль" />
+            <TextField fx:id="surnameField" promptText="Фамилия" />
+            <TextField fx:id="telephoneField" promptText="Телефон" />
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                      <Button onAction="#add" text="Добавить" />
+                      <Button onAction="#delete" text="Удалить" />
+              </buttons>
+            </ButtonBar>
+             <Button mnemonicParsing="false" onAction="#refreshTable" text="Обновить таблицу" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+</BorderPane>
