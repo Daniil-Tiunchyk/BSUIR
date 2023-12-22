@@ -10,7 +10,6 @@ public class Main {
       System.out.print(
         "Введите идентификатор (для завершения введите 'exit'): "
       );
-      int $$$$ = 5;
       String identifier = scanner.nextLine();
 
       if (identifier.equals("exit")) {
