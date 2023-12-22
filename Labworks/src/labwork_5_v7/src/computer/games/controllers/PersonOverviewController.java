@@ -100,7 +100,9 @@ public class PersonOverviewController {
 
   @FXML
   private void handleEditPerson() {
-    MedicalPerson selectedMedicalPerson = personTable.getSelectionModel().getSelectedItem();
+    MedicalPerson selectedMedicalPerson = personTable
+      .getSelectionModel()
+      .getSelectedItem();
     if (selectedMedicalPerson != null) {
       boolean okClicked = mainApp.showPersonEditDialog(selectedMedicalPerson);
       if (okClicked) showPersonDetails(selectedMedicalPerson);

@@ -21,9 +21,7 @@ public class OpenApiConfig {
             "This API serves the system, allowing interactions with various endpoints."
           )
           .version("0.0.1")
-          .contact(
-            new Contact()
-          )
+          .contact(new Contact())
       );
   }
 }

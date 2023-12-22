@@ -104,7 +104,9 @@ public class PersonOverviewController {
 
   @FXML
   private void handleEditPerson() {
-    Correspondence selectedCorrespondence = personTable.getSelectionModel().getSelectedItem();
+    Correspondence selectedCorrespondence = personTable
+      .getSelectionModel()
+      .getSelectedItem();
     if (selectedCorrespondence != null) {
       boolean okClicked = mainApp.showPersonEditDialog(selectedCorrespondence);
       if (okClicked) showPersonDetails(selectedCorrespondence);

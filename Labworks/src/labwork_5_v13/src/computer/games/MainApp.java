@@ -3,7 +3,6 @@ package computer.games;
 import computer.games.controllers.PersonEditDialogController;
 import computer.games.controllers.PersonOverviewController;
 import computer.games.model.Correspondence;
-
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -33,17 +32,31 @@ public class MainApp extends Application {
   }
 
   public MainApp() {
-    correspondenceData.add(new Correspondence("Второй том мёртвых душ", "Иван Мишкин"));
+    correspondenceData.add(
+      new Correspondence("Второй том мёртвых душ", "Иван Мишкин")
+    );
     correspondenceData.add(new Correspondence("Война и мир", "Лев Толстой"));
-    correspondenceData.add(new Correspondence("Преступление и наказание", "Фёдор Достоевский"));
+    correspondenceData.add(
+      new Correspondence("Преступление и наказание", "Фёдор Достоевский")
+    );
     correspondenceData.add(new Correspondence("Отцы и дети", "Иван Тургенев"));
     correspondenceData.add(new Correspondence("Анна Каренина", "Лев Толстой"));
-    correspondenceData.add(new Correspondence("Собачье сердце", "Михаил Булгаков"));
-    correspondenceData.add(new Correspondence("Мастер и Маргарита", "Михаил Булгаков"));
+    correspondenceData.add(
+      new Correspondence("Собачье сердце", "Михаил Булгаков")
+    );
+    correspondenceData.add(
+      new Correspondence("Мастер и Маргарита", "Михаил Булгаков")
+    );
     correspondenceData.add(new Correspondence("Идиот", "Фёдор Достоевский"));
-    correspondenceData.add(new Correspondence("Мёртвые души", "Николай Гоголь"));
-    correspondenceData.add(new Correspondence("Евгений Онегин", "Александр Пушкин"));
-    correspondenceData.add(new Correspondence("Чёрный обелиск", "Эрих Мария Ремарк"));
+    correspondenceData.add(
+      new Correspondence("Мёртвые души", "Николай Гоголь")
+    );
+    correspondenceData.add(
+      new Correspondence("Евгений Онегин", "Александр Пушкин")
+    );
+    correspondenceData.add(
+      new Correspondence("Чёрный обелиск", "Эрих Мария Ремарк")
+    );
   }
 
   public ObservableList<Correspondence> getPersonData() {
@@ -68,7 +81,9 @@ public class MainApp extends Application {
     try {
       FXMLLoader loader = new FXMLLoader();
 
-      loader.setLocation(MainApp.class.getResource("view/CorrespondenceOverview.fxml"));
+      loader.setLocation(
+        MainApp.class.getResource("view/CorrespondenceOverview.fxml")
+      );
       AnchorPane personOverview = loader.load();
       rootLayout.setCenter(personOverview);
       PersonOverviewController controller = loader.getController();

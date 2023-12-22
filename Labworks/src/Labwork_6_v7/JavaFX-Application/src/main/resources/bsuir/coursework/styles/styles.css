@@ -1,94 +1,100 @@
 .root {
-    -fx-font-family: "Verdana";
-    -fx-base: #f0f0f0;
-    -fx-background: #e7e7e7;
+  -fx-font-family: "Verdana";
+  -fx-base: #f0f0f0;
+  -fx-background: #e7e7e7;
 }
 
 .label {
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-text-fill: black;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: black;
 }
 
-.text-area, .text-field, .password-field, .date-picker {
-    -fx-font-size: 14px;
-    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
+.text-area,
+.text-field,
+.password-field,
+.date-picker {
+  -fx-font-size: 14px;
+  -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
 }
 
 .table-view {
-    -fx-font-size: 14px;
+  -fx-font-size: 14px;
 }
 
 .table-column {
-    -fx-font-weight: normal;
-    -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-font-size: 14px;
 }
 
 .button {
-    -fx-background-color: #555555;
-    -fx-font-size: 14px;
-    -fx-text-fill: white;
-    -fx-padding: 8px 16px;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5;
+  -fx-background-color: #555555;
+  -fx-font-size: 14px;
+  -fx-text-fill: white;
+  -fx-padding: 8px 16px;
+  -fx-border-color: black;
+  -fx-border-width: 1px;
+  -fx-border-radius: 5;
 }
 
 .button:hover {
-    -fx-background-color: #333333;
+  -fx-background-color: #333333;
 }
 
-.text-field, .text-area, .password-field, .date-picker {
-    -fx-border-color: #bfbfbf;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
-    -fx-padding: 5px;
+.text-field,
+.text-area,
+.password-field,
+.date-picker {
+  -fx-border-color: #bfbfbf;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-padding: 5px;
 }
 
 .titled-pane {
-    -fx-background-color: #f2f2f2;
-    -fx-font-size: 14px;
+  -fx-background-color: #f2f2f2;
+  -fx-font-size: 14px;
 }
 
 .titled-pane > .title {
-    -fx-background-color: transparent;
-    -fx-text-fill: black;
+  -fx-background-color: transparent;
+  -fx-text-fill: black;
 }
 
 .list-view {
-    -fx-font-size: 14px;
+  -fx-font-size: 14px;
 }
 
 .combo-box {
-    -fx-font-size: 14px;
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #bfbfbf;
-    -fx-border-radius: 5;
+  -fx-font-size: 14px;
+  -fx-background-color: #ffffff;
+  -fx-border-color: #bfbfbf;
+  -fx-border-radius: 5;
 }
 
 .combo-box .list-cell {
-    -fx-padding: 4px;
+  -fx-padding: 4px;
 }
 
 .combo-box .button {
-    -fx-background-color: #f2f2f2;
-    -fx-text-fill: black;
+  -fx-background-color: #f2f2f2;
+  -fx-text-fill: black;
 }
 
 .combo-box .arrow-button {
-    -fx-background-color: #bfbfbf;
+  -fx-background-color: #bfbfbf;
 }
 
 .menu {
-    -fx-font-size: 14px;
-    -fx-text-fill: black;
+  -fx-font-size: 14px;
+  -fx-text-fill: black;
 }
 
 .menu-item {
-    -fx-font-size: 14px;
-    -fx-text-fill: black;
+  -fx-font-size: 14px;
+  -fx-text-fill: black;
 }
 
 .button {
-    -fx-background-color: darkgray;
+  -fx-background-color: darkgray;
 }
