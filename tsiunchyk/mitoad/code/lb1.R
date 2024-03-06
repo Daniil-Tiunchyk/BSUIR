@@ -1,24 +1,22 @@
-# Установка пакетов
-install.packages(c("plyr", "ggplot2", "ggthemes", "knitr", "highcharter", "stringi", "sp"))
+# List of required packages
+required_packages <- c(
+  "cluster", "dplyr", "ggplot2", "ggthemes", "highcharter", "knitr", "lubridate",
+  "plyr", "rmarkdown", "sp", "stats", "stringi", "tidyr", "xts"
+)
 
-# Убедитесь, что все пакеты из списка установлены
-required_packages <- c("cluster", "dplyr", "ggplot2", "ggthemes", "highcharter", "knitr", "lubridate", 
-                       "plyr", "rmarkdown", "sp", "stats", "stringi", "tidyr", "xts")
-
-# Установка отсутствующих пакетов
-install_missing_packages <- required_packages[!(required_packages %in% installed.packages()[,"Package"])]
-if (length(in
-# Создание файла packages.txt
-installed_packages <- as.data.frame(installed.packages())
-installed_packages <- installed_packages[,c("Package", "Version")]
-
-# Создание папки docs, если её нет
-if (!file.exists("docs")) {
-  dir.create("docs")
+# Install missing packages
+for (pkg in required_packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+  }
 }
 
-# Запись списка установленных пакетов в файл
-write.table(installed_packages, file = "docs/packages.txt", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t")
-stall_missing_packages) > 0) {
-  install.packages(install_missing_packages)
+# Get installed packages
+installed_packages <- as.data.frame(installed.packages())
+installed_packages <- installed_packages[, c("Package", "Version")]
+
+# Create docs directory and write packages.txt
+if (!dir.exists("docs")) {
+  dir.create("docs")
+  write.csv(installed_packages, file = "docs/packages.csv", row.names = FALSE)
 }

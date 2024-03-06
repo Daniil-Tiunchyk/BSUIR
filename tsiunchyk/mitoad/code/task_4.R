@@ -1,50 +1,43 @@
-# Загрузка данных из файла
+# Load necessary library
+library(dplyr)
+
+# Load data
 data <- read.csv("Birds.csv")
 
-# Добавление колонок и заполнение значений
-data$individualsPerObservation <- data$individualsNumber / data$observations
-data$speciesShare <- data$individualsNumber / sum(data$individualsNumber)
+# Add columns and fill values
+data <- data %>%
+    mutate(
+        individualsPerObservation = individualsNumber / observations,
+        speciesShare = individualsNumber / sum(individualsNumber)
+    )
 
-# Сортировка данных по убыванию individualsNumber
-sorted_data <- data[order(-data$individualsNumber), ]
+# Sort data by individualsNumber in descending order
+sorted_data <- data %>%
+    arrange(desc(individualsNumber))
 
-# Выводим первые строки данных в консоль для проверки
-print(head(sorted_data))
-
-# Сохранение модифицированной таблицы в файл
+# Save modified table to file
 write.csv(sorted_data, "Birds.csv_updated.csv", row.names = FALSE)
 
-# Получение необходимых данных
+# Calculate necessary data
 total_observed_birds <- sum(data$individualsNumber)
 median_observations <- median(data$observations)
 bird_counts_ranges <- table(cut(data$individualsNumber, breaks = c(0, 10, 50, 100, 500, 1000, Inf)))
-
 max_individuals_bird <- data[which.max(data$individualsNumber), ]$speciesName
 
-# Выводим значения переменных в консоль для проверки
-print(total_observed_birds)
-print(median_observations)
-print(bird_counts_ranges)
-print(max_individuals_bird)
-
-# Дополнительные метрики (insights)
-# Пример 1: Максимальное количество наблюдений для одной птицы
+# Additional metrics (insights)
 max_observations <- max(data$observations)
+mean_individuals_per_observation <- mean(data$individualsPerObservation, na.rm = TRUE)
 
-# Пример 2: Среднее количество особей в одном наблюдении
-mean_individuals_per_observation <- mean(data$individualsPerObservation)
-
-# Вывод значений дополнительных метрик в консоль
-print(max_observations)
-print(mean_individuals_per_observation)
-
-# Сохранение результатов в файл
-cat(paste("Общее количество наблюдаемых птиц: ", total_observed_birds), "\n", file = "Birds_analysis.txt")
-cat(paste("Медианное значение числа наблюдений: ", median_observations), "\n", file = "Birds_analysis.txt")
-cat("Перечни названий птиц в различных диапазонах:\n", file = "Birds_analysis.txt")
-cat(paste(names(bird_counts_ranges), bird_counts_ranges), "\n", file = "Birds_analysis.txt", append = TRUE)
-cat(paste("Название птицы с максимальным числом особей в одном наблюдении: ", max_individuals_bird), "\n", file = "Birds_analysis.txt", append = TRUE)
-
-cat(paste("Максимальное количество наблюдений для одной птицы: ", max_observations), "\n", file = "Birds_analysis.txt", append = TRUE)
-cat(paste("Среднее количество особей в одном наблюдении: ", mean_individuals_per_observation), "\n", file = "Birds_analysis.txt", append = TRUE)
-# Добавьте еще три метрики (insights) на свое усмотрение и сохраните их с аргументом append = TRUE
+# Save results to file
+cat(
+    paste(
+        "Total observed birds: ", total_observed_birds, "\n",
+        "Median observations: ", median_observations, "\n",
+        "Bird counts ranges: ", toString(bird_counts_ranges), "\n",
+        "Bird with max individuals: ", max_individuals_bird, "\n",
+        "Max observations for a bird: ", max_observations, "\n",
+        # Fix NA
+        # "Mean individuals per observation: ", mean_individuals_per_observation
+    ),
+    file = "Birds_analysis.txt"
+)
