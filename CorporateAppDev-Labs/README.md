@@ -1,41 +1,41 @@
-## XMLCreditCardManager: Comprehensive Credit Card Management with Spring Boot
+# XMLCreditCardManager: Лабораторные работы по управлению кредитными картами с использованием Spring Boot
 
-### Description
+## Описание
 
-XMLCreditCardManager is an advanced project for handling credit card information. The project combines classic XML parsing techniques with modern Spring Boot technology to create a comprehensive solution for credit card data management. This project now includes a RESTful API, Database Integration, and uses Factory Method and Singleton Design Patterns. Developed as part of the "Corporate Applications Programming" course, this project demonstrates a high level of expertise in Java programming.
+Проект разработан в рамках дисциплины «Программирование корпоративных приложений» и демонстрирует практическое применение принципов объектно-ориентированного программирования и шаблонов проектирования на языке Java. В проекте используется комбинация классических технологий парсинга XML и современных подходов на базе Spring Boot. Проект включает реализацию RESTful API, интеграцию с базой данных и применяет паттерны проектирования Factory Method и Singleton.
 
-### Features
+## Функциональные возможности
 
-#### Legacy Features
-- `CreditCard.java`: The main class that represents a credit card with attributes and validation logic.
-- `DOMParser.java` and `SAXParser.java`: Classes to parse XML files containing credit card information.
-- `InvalidCardException.java`: A custom exception to handle invalid credit card cases.
+### Базовая функциональность
 
-#### New Features
-- RESTful API to interact with credit card data
-- Database integration for storing and retrieving credit card information
-- Factory Method and Singleton design patterns for efficient object creation and resource utilization
-- Spring Boot application, built with Maven for easy dependency management
-- Automated tests for added features
+- `CreditCard.java`: Класс для моделирования кредитной карты с атрибутами и встроенной валидацией.
+- `DOMParser.java` и `SAXParser.java`: Модули для парсинга XML-файлов, содержащих данные кредитных карт.
+- `InvalidCardException.java`: Пользовательское исключение для обработки недействительных карт.
 
-### How it Works
+### Расширенная функциональность
 
-#### Using Legacy Features
-1. Clone the repository to your local machine.
-2. Add your XML file `credit_cards.xml` to the root directory.
-3. Run `Main.java`.
-4. Check the console and `output.txt` for the validation results.
+- RESTful API для взаимодействия с данными кредитных карт
+- Интеграция с базой данных для хранения и извлечения информации о кредитных картах
+- Реализация паттернов Factory Method и Singleton для оптимального создания объектов и управления ресурсами
+- Приложение на базе Spring Boot, собранное с помощью Maven, что упрощает управление зависимостями и процесс сборки
+- Автоматизированные тесты для проверки функциональности новых возможностей
 
-#### Using New Features
-1. Clone the repository.
-2. Navigate to the root directory and start the Spring Boot application using `mvn spring-boot:run` or your IDE's run configuration.
-3. The RESTful API is accessible at `http://localhost:8080`.
-4. Use REST API endpoints to add, delete, and manage credit card information.
+## Инструкция по запуску
 
-### Contributing
+### Работа с базовой функциональностью
 
-Contributions are always welcome! Feel free to fork the project, make changes, and create pull requests.
+1. Клонируйте репозиторий на локальную машину.
+2. Добавьте XML-файл с данными кредитных карт `credit_cards.xml` в корневую директорию проекта.
+3. Запустите `Main.java` для выполнения парсинга и валидации.
+4. Результаты обработки будут выведены в консоль и записаны в файл `output.txt`.
 
-### License
+### Работа с расширенной функциональностью
 
-MIT
+1. Клонируйте репозиторий.
+2. Перейдите в корневую директорию и выполните запуск Spring Boot приложения с помощью команды `mvn spring-boot:run` или через среду разработки.
+3. RESTful API будет доступен по адресу `http://localhost:8080`.
+4. Используйте API для создания, удаления и управления данными кредитных карт через интерфейс, который вызывает GET, POST, PUT и DELETE запросы.
+
+## Вклад в проект
+
+Проект разработан в рамках лабораторных работ и открыт для улучшений. Вы можете форкнуть репозиторий, внести свои изменения и отправить pull request.

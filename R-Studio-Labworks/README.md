@@ -17,8 +17,8 @@
 
 Для запуска лабораторных работ откройте файл проекта RStudio в соответствующей директории:
 
-- Для первой лабораторной работы откройте `R-Studio-Labworks-BSUIR\tsiunchyk\mitoad\code\labwork_1`
-- Для второй лабораторной работы откройте `R-Studio-Labworks-BSUIR\tsiunchyk\mitoad\code\labwork_2`
+- Для первой лабораторной работы откройте `R-Studio-Labworks-BSUIR\tiunchyk\mitoad\code\labwork_1`
+- Для второй лабораторной работы откройте `R-Studio-Labworks-BSUIR\tiunchyk\mitoad\code\labwork_2`
 
 ## Вклад
 
@@ -30,7 +30,7 @@
 
 ## Авторы
 
-- Даниил Тиунчик (GitHub [Daniil-Tsiunchyk](https://github.com/Daniil-Tsiunchyk)) - студент БГУИР
+- Даниил Тиунчик (GitHub [Daniil-Tiunchyk](https://github.com/Daniil-Tiunchyk)) - студент БГУИР
 
 ## Благодарности
 
